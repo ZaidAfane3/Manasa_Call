@@ -32,13 +32,11 @@ def manasa():
     from selenium.webdriver.firefox.options import Options
     from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
-    binary = FirefoxBinary('/app/vendor/firefox/firefox')
-
-    link = 'https://www.gateway2jordan.gov.jo/landplatform/'
-    options = Options()
-    options.headless = True
-    
     while True: 
+        binary = FirefoxBinary('/app/vendor/firefox/firefox')
+        link = 'https://www.gateway2jordan.gov.jo/landplatform/'
+        options = Options()
+        options.add_argument("--headless")
         driver = webdriver.Firefox(options=options, executable_path='/app/vendor/geckodriver/geckodriver', firefox_binary=binary)
         driver.get(link)
         options = Select(driver.find_element_by_xpath('//*[@id="ddlCrossingpoint"]')).options
