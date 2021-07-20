@@ -2,6 +2,7 @@ from os import system
 import sys
 from time import sleep
 from time import time
+from datetime import datetime
 
 def make_call():
     from twilio.rest import Client
@@ -10,6 +11,7 @@ def make_call():
     auth_token = os.environ['TWILIO_AUTH_TOKEN']
 
     client = Client(account_sid, auth_token)
+    print ('[%s] Making Call' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
 
     call = client.calls.create(
         twiml='<Response><Say>Hurry Up</Say></Response>',
@@ -44,12 +46,10 @@ def manasa():
             words = option.text.split()
             for word in words: 
                 if 'king' == word.lower():
-                    print ('[%s] Making Call' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
                     make_call()
                     break
 
         if len(options) != 5:
-            print ('[%s] Making Call' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
             make_call()
             break
         print ('[%s] Didn\'t Open Yet' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")), flush=True)
