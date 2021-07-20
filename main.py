@@ -1,4 +1,5 @@
 from os import system
+from os import getenv
 import sys
 from time import sleep
 from time import time
@@ -12,7 +13,6 @@ def make_call():
 
     client = Client(account_sid, auth_token)
     print ('[%s] Making Call' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
-
     call = client.calls.create(
         twiml='<Response><Say>Hurry Up</Say></Response>',
         # to='+962790810526',
@@ -32,6 +32,7 @@ def manasa():
     from selenium.webdriver.firefox.options import Options
     from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
+
     while True: 
         binary = FirefoxBinary('/app/vendor/firefox/firefox')
         link = 'https://www.gateway2jordan.gov.jo/landplatform/'
@@ -40,6 +41,8 @@ def manasa():
         driver = webdriver.Firefox(options=options, executable_path='/app/vendor/geckodriver/geckodriver', firefox_binary=binary)
         driver.get(link)
         options = Select(driver.find_element_by_xpath('//*[@id="ddlCrossingpoint"]')).options
+        if getenv('TEST_CALL') == 'TRUE':
+            make_call()
         for option in options:
             words = option.text.split()
             for word in words: 
