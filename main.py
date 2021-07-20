@@ -34,7 +34,7 @@ def manasa():
 
     binary = FirefoxBinary('/app/vendor/firefox/firefox')
 
-    print ('[%s] Started Script' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
+    # print ('[%s] Started Script' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
     link = 'https://www.gateway2jordan.gov.jo/landplatform/'
     options = Options()
     options.headless = True
@@ -43,10 +43,10 @@ def manasa():
 
     driver.get(link)
     while True: 
-        print ('[%s] Page Loaded' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
+        # print ('[%s] Page Loaded' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
         options = Select(driver.find_element_by_xpath('//*[@id="ddlCrossingpoint"]')).options
         start = time()
-        print (f'[%s] {[ option.text for option in options]}' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
+        # print (f'[%s] {[ option.text for option in options]}' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
         for option in options:
             words = option.text.split()
             for word in words: 
@@ -57,7 +57,7 @@ def manasa():
         if len(options) != 5:
             make_call()
             break
-        print ('[%s] Didn\'t Open Yet' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")), flush=True)
+        # print ('[%s] Didn\'t Open Yet' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")), flush=True)
         delay()
         driver.refresh()
         system("clear")
