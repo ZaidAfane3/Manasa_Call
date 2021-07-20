@@ -35,7 +35,9 @@ def manasa():
     link = 'https://www.gateway2jordan.gov.jo/landplatform/'
     options = Options()
     options.headless = True
+    # driver = webdriver.Firefox(options=options, executable_path='/app/geckodriver')
     driver = webdriver.Firefox(options=options, executable_path='/app/geckodriver')
+
     driver.get(link)
     while True: 
         print ('[%s] Page Loaded' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
