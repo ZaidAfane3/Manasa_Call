@@ -64,7 +64,7 @@ def manasa():
 
 
 def main():
-    make_call()
+    # make_call()
     manasa()
 
 if __name__ == "__main__":
