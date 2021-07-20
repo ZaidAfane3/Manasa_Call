@@ -34,19 +34,14 @@ def manasa():
 
     binary = FirefoxBinary('/app/vendor/firefox/firefox')
 
-    # print ('[%s] Started Script' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
     link = 'https://www.gateway2jordan.gov.jo/landplatform/'
     options = Options()
     options.headless = True
-    # driver = webdriver.Firefox(options=options, executable_path='/app/geckodriver')
-    driver = webdriver.Firefox(options=options, executable_path='/app/vendor/geckodriver/geckodriver', firefox_binary=binary)
-
-    driver.get(link)
+    
     while True: 
-        # print ('[%s] Page Loaded' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
+        driver = webdriver.Firefox(options=options, executable_path='/app/vendor/geckodriver/geckodriver', firefox_binary=binary)
+        driver.get(link)
         options = Select(driver.find_element_by_xpath('//*[@id="ddlCrossingpoint"]')).options
-        start = time()
-        # print (f'[%s] {[ option.text for option in options]}' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
         for option in options:
             words = option.text.split()
             for word in words: 
@@ -57,9 +52,9 @@ def manasa():
         if len(options) != 5:
             make_call()
             break
-        # print ('[%s] Didn\'t Open Yet' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")), flush=True)
         delay()
-        driver.refresh()
+        # driver.refresh()
+        driver.close()
 
 
 def main():
