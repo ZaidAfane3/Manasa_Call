@@ -60,7 +60,6 @@ def manasa():
         # print ('[%s] Didn\'t Open Yet' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")), flush=True)
         delay()
         driver.refresh()
-        system("clear")
 
 
 def main():
