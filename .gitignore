@@ -3,3 +3,5 @@ failsafe.txt
 geckodriver-v0.29.1-macos.tar.gz
 geckodriver.log
 main.old.py
+.DS_Store
+log.log
