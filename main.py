@@ -30,13 +30,16 @@ def manasa():
     from selenium import webdriver
     from selenium.webdriver.support.ui import Select
     from selenium.webdriver.firefox.options import Options
+    from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+
+    binary = FirefoxBinary('/app/vendor/firefox/firefox')
 
     print ('[%s] Started Script' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
     link = 'https://www.gateway2jordan.gov.jo/landplatform/'
     options = Options()
     options.headless = True
     # driver = webdriver.Firefox(options=options, executable_path='/app/geckodriver')
-    driver = webdriver.Firefox(options=options)
+    driver = webdriver.Firefox(options=options, executable_path='/app/vendor/geckodriver/geckodriver', firefox_binary=binary)
 
     driver.get(link)
     while True: 
