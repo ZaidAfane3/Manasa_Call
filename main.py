@@ -35,28 +35,28 @@ def manasa():
     options.headless = True
     driver = webdriver.Firefox(options=options)
     driver.get(link)
-    with open("log.log" , "w+") as f:
-        while True: 
-            print ('[%s] Page Loaded' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
-            options = Select(driver.find_element_by_xpath('//*[@id="ddlCrossingpoint"]')).options
-            start = time()
-            print (f'[%s] {[ option.text for option in options]}' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
-            for option in options:
-                words = option.text.split()
-                for word in words: 
-                    if 'king' == word.lower():
-                        print ('[%s] Making Call' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
-                        make_call()
-                        break
+    while True: 
+        print ('[%s] Page Loaded' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
+        options = Select(driver.find_element_by_xpath('//*[@id="ddlCrossingpoint"]')).options
+        start = time()
+        print (f'[%s] {[ option.text for option in options]}' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
+        for option in options:
+            words = option.text.split()
+            for word in words: 
+                if 'king' == word.lower():
+                    print ('[%s] Making Call' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
+                    make_call()
+                    break
 
-            if len(options) != 5:
-                print ('[%s] Making Call' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
-                make_call()
-                break
-            print ('[%s] Didn\'t Open Yet' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")), flush=True)
-            delay()
-            driver.refresh()
-            system("clear")
+        if len(options) != 5:
+            print ('[%s] Making Call' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
+            make_call()
+            break
+        print ('[%s] Didn\'t Open Yet' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")), flush=True)
+        delay()
+        driver.refresh()
+        system("clear")
+
 
 def main():
     manasa()
