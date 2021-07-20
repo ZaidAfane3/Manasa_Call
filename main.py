@@ -36,7 +36,7 @@ def manasa():
     options = Options()
     options.headless = True
     # driver = webdriver.Firefox(options=options, executable_path='/app/geckodriver')
-    driver = webdriver.Firefox(options=options, executable_path='/app/geckodriver')
+    driver = webdriver.Firefox(options=options)
 
     driver.get(link)
     while True: 
