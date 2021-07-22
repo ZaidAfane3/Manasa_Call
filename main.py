@@ -51,7 +51,7 @@ def manasa():
         for option in options:
             words = option.text.split()
             for word in words: 
-                if 'King' == word.lower():
+                if 'king' == word.lower():
                     make_call()
                     break
         if len(options) != 5:
