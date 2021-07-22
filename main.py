@@ -64,6 +64,7 @@ def manasa():
             make_call()
         for option in options:
             words = option.text.split()
+            print (words)
             for word in words: 
                 if 'حسين' == word.lower():
                     make_call()
