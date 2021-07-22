@@ -51,7 +51,7 @@ def manasa():
         for option in options:
             words = option.text.split()
             for word in words: 
-                if 'Hussein' == word.lower():
+                if 'King' == word.lower():
                     make_call()
                     break
         if len(options) != 5:
@@ -60,16 +60,15 @@ def manasa():
 
         #Arabic
         link = 'https://www.gateway2jordan.gov.jo/landplatform/ar/'
-
         driver.get(link)
         options = Select(driver.find_element_by_xpath('//*[@id="ddlCrossingpoint"]')).options
         if getenv('TEST_CALL') == 'TRUE':
             make_call()
         for option in options:
             words = option.text.split()
-            print (words)
+            # print (words)
             for word in words: 
-                if 'حسين' == word.lower():
+                if 'الملك' == word:
                     make_call()
                     break
         if len(options) != 5:
