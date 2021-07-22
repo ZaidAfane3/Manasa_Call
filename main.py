@@ -39,6 +39,8 @@ def manasa():
         options = Options()
         options.add_argument("--headless")
         driver = webdriver.Firefox(options=options, executable_path='/app/vendor/geckodriver/geckodriver', firefox_binary=binary)
+
+        # English
         driver.get(link)
         options = Select(driver.find_element_by_xpath('//*[@id="ddlCrossingpoint"]')).options
         if getenv('TEST_CALL') == 'TRUE':
@@ -49,11 +51,31 @@ def manasa():
                 if 'king' == word.lower():
                     make_call()
                     break
-
         if len(options) != 5:
             make_call()
             break
+
+        #Arabic
+        link = 'https://www.gateway2jordan.gov.jo/landplatform/'
+
+        driver.get(link)
+        options = Select(driver.find_element_by_xpath('//*[@id="ddlCrossingpoint"]')).options
+        if getenv('TEST_CALL') == 'TRUE':
+            make_call()
+        for option in options:
+            words = option.text.split()
+            for word in words: 
+                if 'حسين' == word.lower():
+                    make_call()
+                    break
+        if len(options) != 5:
+            make_call()
+            break
+
+        
         delay()
+
+
         # driver.refresh()
         driver.close()
 
