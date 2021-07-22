@@ -5,6 +5,8 @@ from time import sleep
 from time import time
 from datetime import datetime
 
+from six import binary_type
+
 def make_call():
     from twilio.rest import Client
     import os
@@ -34,11 +36,12 @@ def manasa():
 
     print ('[%s] Script Started' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
     while True: 
-        binary = FirefoxBinary('/app/vendor/firefox/firefox')
+        binary = FirefoxBinary('/app/vendor/firefox/firefox') #
         link = 'https://www.gateway2jordan.gov.jo/landplatform/'
-        options = Options()
-        options.add_argument("--headless")
+        options = Options()#
+        options.add_argument("--headless")##
         driver = webdriver.Firefox(options=options, executable_path='/app/vendor/geckodriver/geckodriver', firefox_binary=binary)
+        # driver = webdriver.Firefox()
 
         # English
         driver.get(link)
@@ -56,7 +59,7 @@ def manasa():
             break
 
         #Arabic
-        link = 'https://www.gateway2jordan.gov.jo/landplatform/'
+        link = 'https://www.gateway2jordan.gov.jo/landplatform/ar/'
 
         driver.get(link)
         options = Select(driver.find_element_by_xpath('//*[@id="ddlCrossingpoint"]')).options
