@@ -32,7 +32,7 @@ def manasa():
     from selenium.webdriver.firefox.options import Options
     from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
-
+    print ('[%s] Script Started' %(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
     while True: 
         binary = FirefoxBinary('/app/vendor/firefox/firefox')
         link = 'https://www.gateway2jordan.gov.jo/landplatform/'
