@@ -1,0 +1,12 @@
+[Unit]
+Description=Manasa is tmp script to help Zaid find a scheduale to come back to Jordan 
+After=network.target
+
+[Service]
+WorkingDirectory=/home/ubuntu/manasa
+ExecStart=/usr/bin/python3 main.py
+Restart=always
+StartLimitBurst=30
+
+[Install]
+WantedBy=multi-user.target
